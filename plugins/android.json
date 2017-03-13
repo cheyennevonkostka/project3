@@ -18,6 +18,9 @@
         },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.packtpub.phonegaphotshot.test"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.packtpub.phonegaphotshot.test"
         }
     },
     "dependent_plugins": {

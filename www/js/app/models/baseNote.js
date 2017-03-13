@@ -131,13 +131,13 @@ define( [ "yasmf" ], function( _y ) {
      * Cheyenne messing up the code on 3.18.17, just copied name, hope it works
      * 
      */
-    self._status = "";
+    self._status = "New";
     self.getStatus = function() {
       return self._status;
     };
     self.setStatus = function( theStatus ) {
       self._status = theStatus;
-      self._modifiedDate = new Date();
+     
       self.notify( "statusChanged" );
     };
     Object.defineProperty( self, "status", {
