@@ -219,7 +219,7 @@ define( [ "yasmf", "Q", "app/factories/noteFactory" ], function( _y, Q, noteFact
         "uid": noteUID,
         "name": _y.T( "app.ns.A_NEW_NOTE" ),
         "textContents": _y.T( "app.ns.WHATS_ON_YOUR_MIND" ),
-		
+		// I think this is where I'll need to add the default for my status
         "mediaContents": newMediaFileName
       } );
       // add it to our collection

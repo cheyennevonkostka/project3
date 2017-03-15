@@ -53,6 +53,7 @@ define( [ "yasmf", "app/models/noteStorageSingleton",
     // our internal pointers to specific elements
     self._navigationBar = null;
     self._nameEditor = null;
+//	self._statusEditor = null;
     self._scrollContainer = null;
     self._contentsEditor = null;
     self._backButton = null;
@@ -63,9 +64,12 @@ define( [ "yasmf", "app/models/noteStorageSingleton",
      * Save the specific note by copying the name and contents
      * from the DOM
      */
+
     self.saveNote = function() {
       self._note.name = self._nameEditor.innerText;
       self._note.textContents = self._contentsEditor.value;
+		self._note.setStatus = ((document.getElementById("status")).options[(document.getElementById("status")).selectedIndex].value);
+	  
       noteStorageSingleton.saveNote( self._note );
     };
     /**
@@ -91,7 +95,9 @@ define( [ "yasmf", "app/models/noteStorageSingleton",
     self.render = function() {
       // no need to call super; it's abstract
       return _y.template( textNoteEditViewHTML, {
-        "NOTE_NAME": self._note.name,
+        "NOTE_NAME": self._note.name, 
+	//	"STATUS": self._note._status,   // gotta see first if I can even get it on the edit page.
+		//IT WORKS SWEET, NOW IT SAYS NEW on the edit page, so I can try to add functionallity in a bit
         "NOTE_CONTENTS": self._note.textContents,
         "BACK": _y.T( "BACK" ),
         "DELETE_NOTE": _y.T( "app.nev.DELETE_NOTE" )

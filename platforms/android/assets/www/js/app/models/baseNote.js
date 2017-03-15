@@ -57,7 +57,7 @@ define( [ "yasmf" ], function( _y ) {
     self.registerNotification( "mediaContentsChanged" );
     self.registerNotification( "unitValueChanged" );
     self.registerNotification( "unitLabelsChanged" );
-	//IDK FUCK MEE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//Okay this is where the status thingy was added!!
 	self.registerNotification("stausChanged");
     /**
      * The note's unique identifier. getUID is the getter, and
@@ -128,11 +128,14 @@ define( [ "yasmf" ], function( _y ) {
 	
 	/*DEAD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
 	  /**
-     * Cheyenne messing up the code on 3.18.17, just copied name, hope it works
+     * Cheyenne messing up the code on 3.10.17, just copied name, hope it works
      * 
+	 * Cheyenne going to attempt messing up the code again on 3.15.17, here we go!
+	 *
      */
     self._status = "New";
     self.getStatus = function() {
+	
       return self._status;
     };
     self.setStatus = function( theStatus ) {
@@ -140,7 +143,7 @@ define( [ "yasmf" ], function( _y ) {
      
       self.notify( "statusChanged" );
     };
-    Object.defineProperty( self, "status", {
+    Object.defineProperty( self, "Status", {
       get: self.getStatus,
       set: self.setStatus,
       configurable: true
@@ -240,6 +243,8 @@ define( [ "yasmf" ], function( _y ) {
     /**
      * Serializes the object into a JSON string ready
      * for saving in storage.
+	 
+	 add stuff /////////////////////////////////////////////////////////////////////////////////////
      */
     self._serialize = function() {
       return JSON.stringify( {
@@ -247,6 +252,7 @@ define( [ "yasmf" ], function( _y ) {
         "createdDate": self.createdDate,
         "modifiedDate": self.modifiedDate,
         "name": self.name,
+		"Status": self.Status,
         "textContents": self.textContents,
         "mediaContents": self.mediaContents,
         "unitValue": self.unitValue,
@@ -261,6 +267,8 @@ define( [ "yasmf" ], function( _y ) {
     /**
      * Deserializes the JSON String passed in, and returns true if
      * successful, or false if there was an error.
+	 
+	 Add reference for serilization //////////////////////////////////////////////////
      */
     self._deserialize = function( theSerializedObject ) {
       try {
@@ -269,6 +277,7 @@ define( [ "yasmf" ], function( _y ) {
         self.uid = aNote.uid;
         self._createdDate = new Date( aNote.createdDate );
         self.name = aNote.name;
+		self.Status = aNote.Status;
         self.textContents = aNote.textContents;
         self.mediaContents = aNote.mediaContents;
         self.unitValue = aNote.unitValue; // so we don't have to recalc it
